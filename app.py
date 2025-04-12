@@ -12,14 +12,12 @@ import seaborn as sns
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import PCA
 
-# Ensure NLTK data is available
-# Ensure NLTK Punkt tokenizer is downloaded (critical for Streamlit Cloud)
 try:
     nltk.data.find('tokenizers/punkt')
 except LookupError:
-    nltk.download('punkt')
+    nltk.download('punkt', force=True)  # Add force=True here
 
-nltk.download('stopwords')
+nltk.download('stopwords', force=True)
 
 # Streamlit app settings
 st.set_page_config(page_title="Wikipedia Sentiment Analyzer", layout="wide")
