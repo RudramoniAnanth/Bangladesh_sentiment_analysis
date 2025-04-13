@@ -15,9 +15,9 @@ from sklearn.decomposition import PCA
 try:
     nltk.data.find('tokenizers/punkt')
 except LookupError:
-    nltk.download('punkt', force=True)  # Add force=True here
+    nltk.download('Punkt', force=True)  # Add force=True here
 
-nltk.download('stopwords', force=True)
+nltk.download('Stopwords', force=True)
 
 # Streamlit app settings
 st.set_page_config(page_title="Wikipedia Sentiment Analyzer", layout="wide")
