@@ -12,13 +12,23 @@ import seaborn as sns
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import PCA
 
+# Ensure NLTK data is available
+# Download necessary NLTK data files for Streamlit Cloud compatibility
 try:
     nltk.data.find('tokenizers/punkt')
 except LookupError:
-    nltk.download('Punkt', force=True)  # Add force=True here
-
-nltk.download('Stopwords', force=True)
-
+    nltk.download('punkt', quiet=True) # Added quiet=True to suppress download messages in the app
+try:
+    # Specifically download punkt_tab as requested by the error message
+    nltk.data.find('tokenizers/punkt_tab')
+except LookupError:
+    nltk.download('punkt_tab', quiet=True) # Added quiet=True
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords', quiet=True) # Added quiet=True
+    
+    
 # Streamlit app settings
 st.set_page_config(page_title="Wikipedia Sentiment Analyzer", layout="wide")
 st.title("📘 Wikipedia Text Sentiment Analyzer")
